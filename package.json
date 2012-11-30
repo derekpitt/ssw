@@ -1,0 +1,12 @@
+{
+  "name": "sqs-status",
+  "version": "0.0.1",
+  "dependencies": {
+    "aws-lib": "",
+    "underscore": "",
+    "async": "",
+    "node-term-ui": "",
+    "timethat": "",
+    "stringformat": ""
+  }
+}
