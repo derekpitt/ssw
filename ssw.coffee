@@ -103,8 +103,8 @@ print_results = ->
       queue_data_set = get_data_set_by_queue_name queue_detail.queue_name
 
       if queue_data_set.length > 1
-        estimated_time = estimate_time_when_y_zero(queue_data_set)
-        if (not isNaN estimated_time) and _.isFinite(estimated_time) and estimated_time > Date.now()
+        estimated_time = estimate_time_when_y_zero queue_data_set
+        if (not isNaN estimated_time) and (_.isFinite estimated_time) and (estimated_time > Date.now())
           drain_message = "estimated drain in #{timethat.calc Date.now(), new Date(Math.floor estimated_time)}"
 
     console.log format_str.format queue_detail.queue_name, queue_detail.available, queue_detail.in_flight, drain_message
