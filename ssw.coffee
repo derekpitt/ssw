@@ -73,8 +73,8 @@ estimate_time_when_y_zero = (set) ->
 
 get_data_set_by_queue_name = (queue_name) ->
   _.map history, (q) -> 
-    current_queue = _.filter q.obj, (i) -> i.queue_name == queue_name
-    { x: q.time, y: current_queue[0].available + current_queue[0].in_flight }
+    current_queue = _.find q.obj, (i) -> i.queue_name == queue_name
+    { x: q.time, y: current_queue.available + current_queue.in_flight }
 
 
 
