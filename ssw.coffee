@@ -91,6 +91,11 @@ reset_screen = -> do term.clear; do term.home
 print_results = ->
 
   do reset_screen
+
+  format_str = "{0:-30} {1:15} {2:15} {3}"
+  console.log format_str.format "name", "avail", "in flight", ""
+  console.log format_str.format "----", "-----", "---------", ""
+
   for queue_detail, idx in latest_from_history()
     drain_message = ""
 
@@ -102,8 +107,7 @@ print_results = ->
         if (not isNaN estimated_time) and _.isFinite(estimated_time) and estimated_time > Date.now()
           drain_message = "estimated drain in #{timethat.calc Date.now(), new Date(Math.floor estimated_time)}"
 
-    out_str = "{0:-30} {1:10i} {2:10i} {3}".format queue_detail.queue_name, queue_detail.available, queue_detail.in_flight, drain_message
-    console.log out_str
+    console.log format_str.format queue_detail.queue_name, queue_detail.available, queue_detail.in_flight, drain_message
 
 
 # ------------------------------
